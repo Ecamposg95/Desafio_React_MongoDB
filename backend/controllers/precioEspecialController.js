@@ -1,5 +1,7 @@
+// controllers/precioEspecialController.js
 const PrecioEspecial = require('../models/PrecioEspecial');
 
+// Obtener todos los precios especiales
 exports.getPreciosEspeciales = async (req, res) => {
   try {
     const preciosEspeciales = await PrecioEspecial.find();
@@ -9,8 +11,14 @@ exports.getPreciosEspeciales = async (req, res) => {
   }
 };
 
+// Agregar un nuevo precio especial
 exports.addPrecioEspecial = async (req, res) => {
   const { usuarioId, productoId, precioEspecial } = req.body;
+
+  // Validar que los campos obligatorios estén presentes
+  if (!usuarioId || !productoId || !precioEspecial) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+  }
 
   try {
     const nuevoPrecioEspecial = new PrecioEspecial({ usuarioId, productoId, precioEspecial });
@@ -21,6 +29,7 @@ exports.addPrecioEspecial = async (req, res) => {
   }
 };
 
+// Obtener precios especiales por usuarioId
 exports.getPreciosEspecialesByUsuarioId = async (req, res) => {
   try {
     const preciosEspeciales = await PrecioEspecial.find({ usuarioId: req.params.usuarioId });
