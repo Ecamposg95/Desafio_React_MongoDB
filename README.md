@@ -37,7 +37,7 @@ npm start
 
 
 
-## ⚙️ Justificación de elecciones técnicas
+## ⚙️ Estructura
 
 Desafio_React_MongoDB/
     backend/               # Servidor Node.js con Express
