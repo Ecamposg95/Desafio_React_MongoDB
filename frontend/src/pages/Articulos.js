@@ -1,13 +1,13 @@
-// src/pages/Articulos.js
+// src/pages/Articulos.js 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Articulos.css';
 
 const Articulos = () => {
   const [productos, setProductos] = useState([]);
   const [preciosEspeciales, setPreciosEspeciales] = useState([]);
 
-  // Obtener productos y precios especiales
-  useEffect(() => {
+  useEffect(() => {  
     const fetchData = async () => {
       try {
         const productosResponse = await axios.get('http://localhost:5000/api/productos');
@@ -18,33 +18,47 @@ const Articulos = () => {
         console.error('Error fetching data:', error);
       }
     };
-
     fetchData();
   }, []);
 
-  // Función para obtener el precio especial de un producto para un usuario específico
   const obtenerPrecioEspecial = (productoId) => {
     const precioEspecial = preciosEspeciales.find((precio) => precio.productoId === productoId);
-    return precioEspecial ? precioEspecial.precioEspecial : null;
+    return precioEspecial ? precioEspecial.precioEspecial : 'N/A';
   };
 
   return (
-    <div>
+    <div className="articulos-container">
       <h1>Artículos</h1>
-      <table>
+      <table className="articulos-table">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Precio Especial</th>
+            <th>Categoría</th>
+            <th>Stock</th>
+            <th>Descripción</th>
+            <th>Marca</th>
+            <th>SKU</th>
+            <th>Etiquetas</th>
+            <th>Creado en</th>
+            <th>Actualizado en</th>
           </tr>
         </thead>
         <tbody>
           {productos.map((producto) => (
             <tr key={producto._id}>
               <td>{producto.name}</td>
-              <td>{producto.price}</td>
-              <td>{obtenerPrecioEspecial(producto._id) || 'N/A'}</td>
+              <td>${producto.price.toFixed(2)}</td>
+              <td>${obtenerPrecioEspecial(producto._id)}</td>
+              <td>{producto.category}</td>
+              <td>{producto.stock}</td>
+              <td>{producto.description}</td>
+              <td>{producto.brand}</td>
+              <td>{producto.sku}</td>
+              <td>{producto.tags.join(', ')}</td>
+              <td>{new Date(producto.createdAt).toLocaleDateString()}</td>
+              <td>{new Date(producto.updatedAt).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>

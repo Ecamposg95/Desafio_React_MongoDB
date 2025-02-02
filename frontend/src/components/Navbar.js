@@ -5,19 +5,16 @@ import './Navbar.css';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <h1 className="logo">Tienda</h1>
-        <ul className="nav-links">
-          <li>
-            <Link to="/articulos" className="nav-item">Artículos</Link>
-          </li>
-          <li>
-            <Link to="/subida" className="nav-item">Subida</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div className="sidebar">
+      <h2 className="logo">Tienda REAC_MongoDB</h2>
+      <ul className="nav-links">
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/articulos">Artículos</Link></li>
+        <li><Link to="/subida">Subida</Link></li>
+        <li><Link to="/calendar">Calendar</Link></li>
+
+      </ul>
+    </div>
   );
 };
 
