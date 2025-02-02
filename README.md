@@ -41,19 +41,34 @@ npm start
 
 Desafio_React_MongoDB/
     backend/               # Servidor Node.js con Express
+
         controllers/       # Lógica de negocio
+    
         models/            # Modelos de MongoDB
+    
         routes/            # Definición de endpoints
+    
         server.js          # Configuración principal del backend
+    
     frontend/              # Aplicación React
+    
         src/
+    
         components/    # Componentes reutilizables
+    
         pages/         # Páginas principales (Artículos, Subida, Dashboard)
+    
         App.js         # Configuración principal de la aplicación
+    
         public/            # Archivos estáticos
+    
     .env                   # Variables de entorno
+    
     package.json           # Dependencias y scripts
+    
     README.md              # Documentación
+
+
 
 
 ## Software Ides herramientas
